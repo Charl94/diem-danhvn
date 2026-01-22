@@ -1,0 +1,289 @@
+/* --- Reset & Base --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5; /* Nền sáng hơn */
+    color: #333;
+    display: flex; flex-direction: column; min-height: 100vh;
+    font-size: 16px; /* Cỡ chữ cơ bản */
+}
+
+/* --- Header --- */
+.header {
+    background-color: #005a9e; color: white; padding: 1.5rem;
+    text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.header-title { font-size: 2rem; font-weight: 600; }
+.header-subtitle { font-size: 1.125rem; font-weight: 300; margin-top: 0.25rem; }
+
+/* --- Main Content & Container --- */
+.main-content {
+    flex-grow: 1; display: flex; justify-content: center;
+    align-items: flex-start; padding: 1rem; /* Giảm padding trên mobile */
+}
+.container {
+    background: #ffffff; padding: 1.5rem; border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%;
+    max-width: 600px; /* Max width cho mobile first */
+    transition: max-width 0.3s ease;
+}
+.container h2 { text-align: center; margin-bottom: 1.5rem; }
+
+/* --- Login Form --- */
+#login-section { width: 100%; max-width: 400px; margin: auto; } /* Giới hạn chiều rộng form login */
+.form-group { margin-bottom: 1.25rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; }
+.form-group input {
+    width: 100%; padding: 0.875rem; border: 1px solid #ddd;
+    border-radius: 6px; font-size: 1rem;
+}
+.login-button {
+    width: 100%; padding: 0.875rem; background-color: #007bff;
+    color: white; border: none; border-radius: 6px;
+    cursor: pointer; font-size: 1rem; font-weight: 500;
+}
+.login-button:disabled { background-color: #a0a0a0; cursor: not-allowed;}
+#message { text-align: center; margin-top: 1rem; font-size: 0.9rem; }
+
+/* --- Work Area (Dashboard) --- */
+#work-area { width: 100%; display: none; } /* Ẩn ban đầu */
+.welcome-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.dashboard-section { margin-bottom: 1.5rem; }
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    color: #005a9e;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+.section-divider {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 2rem 0;
+}
+
+/* --- Recheck Section --- */
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.recheck-task-item { /* Đã cập nhật */
+    background-color: #f9f9f9;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+    /* Bỏ: display: flex; align-items: center; flex-wrap: wrap; gap: ... */
+}
+.recheck-task-item.completed {
+    background-color: #e8f5e9; /* Nền xanh lá nhạt */
+    border-color: #c8e6c9;
+}
+.task-info { /* (MỚI) Style cho dòng thông tin */
+    margin-bottom: 0.5rem; /* Khoảng cách giữa 2 dòng */
+    display: flex; /* Giữ icon và text trên 1 hàng */
+    align-items: center;
+    flex-wrap: wrap; /* Cho phép wrap nếu quá dài */
+    gap: 0.3rem 0.8rem; /* Khoảng cách trong dòng info */
+}
+.task-actions-row { /* (MỚI) Style cho dòng chứa action link */
+    text-align: right; /* Căn phải link */
+}
+.task-icon { margin-right: 0.2rem; display: inline-block; }
+.task-action { /* Đã cập nhật */
+    /* Bỏ: margin-left: auto; */
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    display: inline-block; /* Để padding hiển thị đúng */
+}
+.task-action:hover {
+    text-decoration: underline;
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+
+/* --- New Attendance Section --- */
+.new-attendance-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: flex-end; /* Căn các item xuống dưới */
+}
+.control-item {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    height: 45px; /* Đặt chiều cao cố định */
+    display: flex; /* Căn giữa nội dung */
+    align-items: center;
+}
+#new-group-dropdown { flex: 2 1 150px; cursor: pointer; }
+#new-attendance-date { flex: 1.5 1 140px; }
+#start-new-attendance-btn {
+    flex: 1 1 auto;
+    height: 45px; /* Chiều cao bằng các input */
+    padding: 0.8rem 1rem;
+    justify-content: center; /* Căn giữa text nút */
+}
+
+/* --- Employee List Area --- */
+#employee-list-area { margin-top: 1.5rem; display: none;} /* Ẩn ban đầu */
+.table-title { border-bottom: none; padding-bottom: 0; }
+#loading-spinner { display: none; text-align: center; padding: 2rem; color: #007bff;font-weight: bold; }
+#employee-table-container { overflow-x: auto; margin-top: 1rem; }
+.employee-table {
+    width: 100%; border-collapse: collapse; margin-top: 0; /* Bỏ margin top */
+    font-size: 0.95rem; table-layout: fixed; min-width: 550px;
+}
+.employee-table th, .employee-table td {
+    border: 1px solid #ddd; padding: 0.75rem 0.5rem;
+    text-align: left; vertical-align: middle; word-wrap: break-word;
+}
+.employee-table thead { background-color: #f4f4f4; color: #333; font-weight: 500; }
+/* Độ rộng 5 cột */
+.col-stt { width: 8%; } .col-ten { width: 43%; } .col-check { width: 10%; } .col-ghichu { width: 29%; }
+/* Căn giữa */
+.employee-table th.col-stt, .employee-table th.col-check,
+.employee-table tbody td:nth-child(1), .employee-table tbody td:nth-child(3), .employee-table tbody td:nth-child(4)
+{ text-align: center; }
+.employee-table tbody td:nth-child(1) .new-row-input { text-align: left; }
+.radio-check { width: 18px; height: 18px; cursor: pointer; accent-color: #007bff; }
+.notes-input {
+    width: 100%; padding: 6px; border: 1px solid #ccc;
+    border-radius: 4px; font-size: 0.9rem;
+}
+.notes-input:focus { outline: none; border-color: #007bff; }
+
+/* --- Table Actions & Back Button --- */
+.table-actions {
+    display: flex; justify-content: space-between;
+    margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #eee;
+    gap: 1rem;
+}
+.action-button {
+    padding: 0.75rem 1.5rem; border: none; border-radius: 6px;
+    font-size: 1rem; font-weight: 500; cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    flex-grow: 1; display: flex; align-items: center; justify-content: center; /* Căn giữa icon/text */
+}
+.primary-button { background-color: #007bff; color: white; }
+.primary-button:hover { background-color: #0056b3; box-shadow: 0 4px 10px rgba(0,123,255,0.2); }
+.secondary-button { background-color: #f0f2f5; color: #333; border: 1px solid #ccc; }
+.secondary-button:hover { background-color: #e2e6ea; }
+.new-row-input {
+    width: 100%; padding: 6px; border: 1px solid #ccc;
+    border-radius: 4px; font-size: 0.9rem;
+}
+.new-row-input:focus { outline: none; border-color: #007bff; }
+.back-button {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem; /* Thêm margin dưới */
+    width: auto; /* Không chiếm hết chiều rộng */
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    flex-grow: 0; /* Không co giãn */
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center; padding: 0.5rem; font-size: 0.75rem;
+    color: #888; background-color: #f0f2f5; margin-top: auto; /* Đẩy footer xuống */
+}
+
+/* --- Error Highlight --- */
+.row-highlight-error td {
+    border-top: 2px solid #D93025 !important;
+    border-bottom: 2px solid #D93025 !important;
+    background-color: #FDF4F3;
+}
+.row-highlight-error td:first-child { border-left: 2px solid #D93025 !important; }
+.row-highlight-error td:last-child { border-right: 2px solid #D93025 !important; }
+
+/* --- (MỚI) STYLE HIGHLIGHT CHO DÒNG RECHECK --- */
+.recheck-highlight td {
+    border-top: 2px solid red !important; /* Viền đỏ đậm ở trên */
+    border-bottom: 2px solid red !important; /* Viền đỏ đậm ở dưới */
+    /* Optional: background color nhẹ */
+    /* background-color: #ffebee; */
+}
+.recheck-highlight td:first-child {
+    border-left: 2px solid red !important;
+}
+.recheck-highlight td:last-child {
+    border-right: 2px solid red !important;
+}
+
+/* (MỚI) Style cho input bị disabled (làm mờ đi) */
+input[disabled], select[disabled], button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed !important; /* Quan trọng để thấy rõ không click được */
+    background-color: #eee !important; /* Nền xám hơn */
+}
+/* Làm mờ radio button bị disabled */
+.employee-table input[type="radio"][disabled] {
+    accent-color: #999; /* Màu tick xám đi */
+}
+/* Làm mờ input text bị disabled */
+.employee-table input[type="text"][disabled] {
+     color: #777; /* Màu chữ xám đi */
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .main-content { padding: 0.5rem; }
+    .container { padding: 1rem; }
+    .header-title { font-size: 1.6rem; }
+    .header-subtitle { font-size: 1rem; }
+    .welcome-title { font-size: 1.3rem; }
+    .section-title { font-size: 1.1rem; }
+    .action-button { font-size: 0.9rem; }
+}
+@media (max-width: 500px) {
+     .new-attendance-controls .control-item {
+         flex-basis: 100%; /* Mỗi control chiếm 1 dòng */
+         height: 42px; /* Giảm chiều cao chút */
+         padding: 0.6rem;
+     }
+     #start-new-attendance-btn { width: 100%; height: 42px; }
+     .table-actions { flex-direction: column; }
+     .table-actions .action-button { width: 100%; }
+}
+#login-btn.loading:disabled { /* Thêm ID #login-btn để tăng độ ưu tiên */
+    background-color: #007bff !important; /* Dùng !important để ép ghi đè */
+    color: white !important; /* Đảm bảo chữ vẫn trắng */
+    opacity: 0.8; /* Giữ độ mờ */
+    cursor: wait;
+}
+employee-table tr.label-row td { /* Áp dụng cho các ô <td> trong dòng label */
+    background-color: #e9ecef; /* Màu nền xám nhạt (hoặc màu bạn muốn) */
+    font-weight: bold;       /* Chữ in đậm */
+    text-align: center;      /* Canh giữa chữ */
+    color: #495057;          /* Màu chữ tối hơn chút */
+}
+
+/* Ghi đè căn giữa cho ô STT nếu cần */
+.employee-table tr.label-row td { /* Áp dụng cho ô <td> duy nhất trong dòng label */
+    background-color: #DDEBF7; /* Màu nền xanh nhạt (giống file kết quả) */
+    font-weight: bold;       /* Chữ in đậm */
+    text-align: center;      /* Canh giữa chữ */
+    color: #333;             /* Màu chữ đen (hoặc màu bạn muốn) */
+    /* Bỏ các padding/border mặc định nếu cần */
+    padding: 0.75rem 0.5rem; /* Giữ padding giống các ô khác */
+    border: 1px solid #ddd;  /* Giữ border giống các ô khác */
+}
