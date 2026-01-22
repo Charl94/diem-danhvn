@@ -6,7 +6,7 @@
  * ==================================
  */
 
-const API_URL = "https://script.google.com/macros/s/AKfycbyU-1K49HjBsIIzIH8VJXa-Mw019JgLN-kGYFuliFXYXW6BlzVJjdiDaVp6texl9w4xIA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwIvo9uJIwSat5Bz1VliCUUn0EvH2dPlfD_h9553M1VYmXxJTnMo0Iy1ucc033BDsYk3g/exec";
 let currentUserCode = "";
 let currentUserName = ""; // Thêm biến này để lưu tên
 let currentUserGroups = [];
