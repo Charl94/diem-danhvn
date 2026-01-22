@@ -1,1 +1,74 @@
-sdsd
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Liwayway - Kiểm vắng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">HR LIWAYWAY SÀI GÒN</h1>
+        <p class="header-subtitle">DANH SÁCH KIỂM VẮNG</p>
+    </header>
+
+    <main class="main-content">
+        <div class="container" id="main-container">
+            <!-- Vùng Đăng Nhập -->
+            <div id="login-section">
+                <h2>Đăng Nhập</h2>
+                <div class="form-group"><label for="username">Mã NV:</label><input type="text" id="username" placeholder="Mã NV"></div>
+                <div class="form-group"><label for="password">Mật khẩu:</label><input type="password" id="password" placeholder="Mật khẩu"></div>
+                <button id="login-btn" class="login-button">Đăng Nhập</button>
+                <p id="message"></p>
+            </div>
+
+            <!-- Vùng Làm Việc Chính (Sau đăng nhập) -->
+            <div id="work-area" style="display: none;">
+                <h2 id="welcome-message" class="welcome-title">👋 Xin chào, [Tên]!</h2>
+
+                <!-- 1. Khu vực Recheck -->
+                <section id="recheck-section" class="dashboard-section">
+                    <h3 class="section-title">🔄 Danh sách cần điểm danh lại (<span id="recheck-count">0</span>)</h3>
+                    <div id="recheck-list-container" class="task-list">
+                        <!-- JS sẽ điền vào đây -->
+                    </div>
+                </section>
+
+                <hr class="section-divider">
+
+                <!-- 2. Khu vực Điểm danh mới -->
+                <section id="new-attendance-section" class="dashboard-section">
+                    <h3 class="section-title">✅ Điểm danh mới</h3>
+                    <div class="new-attendance-controls">
+                        <select id="new-group-dropdown" class="control-item"><option value="">-Chọn tổ-</option></select>
+                        <input type="date" id="new-attendance-date" class="control-item date-input">
+                        <button id="start-new-attendance-btn" class="control-item action-button primary-button">Bắt đầu</button>
+                    </div>
+                </section>
+
+                 <!-- Nút Quay lại (Ẩn ban đầu) -->
+                <button id="back-button" class="action-button secondary-button back-button" style="display: none;">⬅️ Quay lại</button>
+
+                <!-- 3. Khu vực Bảng Điểm Danh (Ẩn ban đầu) -->
+                <section id="employee-list-area" style="display: none;">
+                    <h3 id="employee-list-title" class="section-title table-title">Danh sách nhân viên</h3>
+                    <div id="loading-spinner" style="display: none;">Đang tải...</div>
+                    <div id="employee-table-container"></div>
+                    <div class="table-actions">
+                        <button id="add-row-btn" class="action-button secondary-button">Thêm</button>
+                        <button id="submit-btn" class="action-button primary-button">Gửi</button>
+                    </div>
+                </section>
+
+                 <!-- Khu vực chọn Sửa cũ (Có thể ẩn hoàn toàn nếu ko dùng nữa) -->
+                 <div id="edit-section" style="display: none;"></div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer"> Triển khai bởi Phòng Nhân Sự </footer>
+    <script src="script.js"></script>
+</body>
+</html>
